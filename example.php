@@ -1,4 +1,4 @@
-<?
+<?php
 	// ini_set("display_errors", 1);
 
 	$start = microtime(true); 
@@ -12,6 +12,10 @@
 	foreach($data[0] as $key => $value) {
 		echo " - " . $key.": " . $value . "<br>";
 	}
+	
+	echo '<br>Голова игрока LoganFrench в 50px:<br>';
+	echo '<img src="' . $api->skin("head", "LoganFrench", 50) . '" /><br>';
+	
 	
 	echo '<br>ТОП-5 бедварс:<br>';
 	$data = $api->leaderboard('bw', NULL, 5);
@@ -44,6 +48,5 @@
 	}
 	
 	
-	echo '<br><br>Время выполнения скрипта: '.substr((microtime(true) - $start), 0, 6);
 	
-?>
+	echo '<br><br>Время выполнения скрипта: '.substr((microtime(true) - $start), 0, 6);
