@@ -78,7 +78,31 @@
 			```php
 			$api->online('streams');
 			```
-	5. Дополнительно
+	5. Графика
+		* Возвращает ссылку на скин/плащ
+		1. Скин игрока
+			1. Голова размером 50px
+				```php
+				$api->skin("head", "LoganFrench", 50)
+				```
+			2. Тело 
+				```php
+				$api->skin("body", "LoganFrench")
+				```
+			3. RAW-формат
+				```php
+				$api->skin("raw", "LoganFrench")
+				```
+		2. Плащ игрока
+			1. Плащ
+				```php
+				$api->cape("cape", "LoganFrench")
+				```
+			2. RAW-формат
+				```php
+				$api->cape("raw", "LoganFrench")
+				```
+	6. Дополнительно
 		1. Список игр, по которым ведется статистика
 			```php
 			$api->misc('games');
