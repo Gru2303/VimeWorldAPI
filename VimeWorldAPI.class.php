@@ -8,8 +8,6 @@
  *
  */
 
-
-
 class VimeWorldAPI {
 	private $token;
 	
@@ -18,10 +16,9 @@ class VimeWorldAPI {
 	}
 	
 	public function user($user = array(), $method = null) {
-		if($method) {
-			if(strtolower($method) == "session") return $this->curl('https://api.vime.world/user/' . (is_array($user) ? implode(',', $user) : $user) . '/session');
-			else return $this->curl('https://api.vime.world/user/' . $user . '/' . strtolower($method));
-		} 
+		if(isset($method)) {
+			return $this->curl('https://api.vime.world/user/' . (is_array($user) ? implode(',', $user) : $user) . '/' . strtolower($method));
+		}
 		else {
 			if(is_string($user[0])) return $this->curl('https://api.vime.world/user/name/' . (is_array($user) ? implode(',', $user) : $user));
 			else return $this->curl('https://api.vime.world/user/' . (is_array($user) ? implode(',', $user) : $user));
@@ -38,7 +35,8 @@ class VimeWorldAPI {
 	
 	public function leaderboard($game, $sort = null, $size = 100) {
 		if(isset($game)) {
-			if(!is_int($size)) $size = 100;
+			if(!is_int($size) || $size < 1 || $size > 1000) $size = 100;
+			
 			if($sort) return $this->curl('https://api.vime.world/leaderboard/get/' . strtolower($game) . '/' . strtolower($sort) . '?size=' . $size);
 			else return $this->curl('https://api.vime.world/leaderboard/get/' . $game . '?size=' . $size);
 		}
